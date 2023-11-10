@@ -41,7 +41,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: |
+          file: |
             edgble-u-boot_neu6b-v2/u-boot/idbloader.img
             edgble-u-boot_neu6b-v2/u-boot/u-boot.itb
             draft: false
