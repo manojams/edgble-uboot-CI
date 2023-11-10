@@ -1,0 +1,50 @@
+name: u-boot release neu6b-v2
+
+on:	
+  push:	
+    branches:	
+      - main	
+
+
+jobs:	
+  build:	
+    name: u-boot release neu6b-v2
+    runs-on: ubuntu-latest	
+
+    steps:	
+      - name: Checkout repository	
+        uses: actions/checkout@v2	
+
+      - name: Install dependencies	
+        run: | 
+          ls	
+          mkdir edgble-u-boot_neu6b-v2	
+          cd edgble-u-boot_neu6b-v2	
+          sudo apt-get update	
+          sudo apt install gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu	
+          
+      - name: Clone U-boot repo
+        run: |	 
+            cd edgble-u-boot_neu6b-v2
+            git clone https://github.com/edgeble/u-boot.git -b neu6b-v2
+            git clone https://github.com/rockchip-linux/rkbin.git
+            export ARCH=arm64 ; export CROSS_COMPILE=aarch64-linux-gnu-	
+            cd u-boot	
+            export BL31=../rkbin/bin/rk35/rk3588_bl31_v1.40.elf
+            export ROCKCHIP_TPL=../rkbin/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.12.bin 
+            make -j12
+          
+      - name: Upload output artifacts	
+        uses: actions/upload-artifact@v2	
+        with:	
+          name: Yocto Output	
+          path: edgble-u-boot_neu6b-v2/u-boot/idbloader.img
+          
+      - name: Upload output artifacts	
+        uses: actions/upload-artifact@v2	
+        with:	
+          name: Yocto Output	
+          path: edgble-u-boot_neu6b-v2/u-boot/u-boot.itb
+
+
+      # Add additional steps if needed, such as deploying the build artifacts
