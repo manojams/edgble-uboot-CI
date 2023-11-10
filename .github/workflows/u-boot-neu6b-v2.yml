@@ -37,9 +37,7 @@ jobs:
             make -j12
     
       - name: Create Release
-        id: create_release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             edgble-u-boot_neu6b-v2/u-boot/idbloader.img
