@@ -38,17 +38,20 @@ jobs:
             
       - name: List Directory Contents
         run: |
-          ls
-          run: | 
-          cd edgble-u-boot_neu6b-v2
-          
+             ls
+             cd edgble-u-boot_neu6b-v2
+             
+      - name: check Directory Contents
+        run: | 
+                ls
+                
       - name: Create Release
         uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: |
-            u-boot/u-boot.itb
+            edgble-u-boot_neu6b-v2/u-boot/u-boot.itb
             draft: false
           
       # Add additional steps if needed, such as deploying the build artifacts
