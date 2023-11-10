@@ -39,8 +39,11 @@ jobs:
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             edgble-u-boot_neu6b-v2/u-boot/idbloader.img
             edgble-u-boot_neu6b-v2/u-boot/u-boot.itb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
