@@ -40,7 +40,7 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "u-boot-neu6b v2-images"
+          tag_name: "v2"
           files: |
             edgble-u-boot_neu6b-v2/u-boot/idbloader.img
             edgble-u-boot_neu6b-v2/u-boot/u-boot.itb
