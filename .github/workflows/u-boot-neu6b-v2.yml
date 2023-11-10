@@ -22,7 +22,8 @@ jobs:
           cd edgble-u-boot_neu6b-v2	
           sudo apt-get update	
           sudo apt install gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu	
-          
+          pip3 install pyelftools
+        
       - name: Clone U-boot repo
         run: |	 
             cd edgble-u-boot_neu6b-v2
