@@ -8,6 +8,7 @@ on:
 
 jobs:	
   build:	
+    permissions: write-all
     name: u-boot release neu6b-v2
     runs-on: ubuntu-latest	
 
