@@ -39,13 +39,13 @@ jobs:
       - name: Upload output artifacts	
         uses: actions/upload-artifact@v2	
         with:	
-          name: Yocto Output	
+          name: u-boot idloader image
           path: edgble-u-boot_neu6b-v2/u-boot/idbloader.img
           
       - name: Upload output artifacts	
         uses: actions/upload-artifact@v2	
         with:	
-          name: Yocto Output	
+          name: u-boot.itb  image
           path: edgble-u-boot_neu6b-v2/u-boot/u-boot.itb
 
 
