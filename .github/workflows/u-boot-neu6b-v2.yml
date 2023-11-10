@@ -35,7 +35,13 @@ jobs:
             export ROCKCHIP_TPL=../rkbin/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.12.bin 
             make neu6b-io-rk3588_defconfig
             make -j12
-
+            
+      - name: List Directory Contents
+        run: |
+          ls
+          ls -R ./edgble-u-boot_neu6b-v2/u-boot
+          cd ./edgble-u-boot_neu6b-v2/u-boot
+          ls
       - name: Create Release
         uses: xresloader/upload-to-github-release@v1
         env:
