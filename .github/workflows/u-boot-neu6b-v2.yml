@@ -34,13 +34,14 @@ jobs:
             export BL31=../rkbin/bin/rk35/rk3588_bl31_v1.40.elf
             export ROCKCHIP_TPL=../rkbin/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.12.bin 
             make neu6b-io-rk3588_defconfig
-            make -j12                
-            uses: xresloader/upload-to-github-release@v1
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-            file: |
-              u-boot.itb
-            draft: false
-          
-      # Add additional steps if needed, such as deploying the build artifacts
+            make -j12
+            
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            edgble-u-boot_neu6b-v2/u-boot/idbloader.img
+            edgble-u-boot_neu6b-v2/u-boot/u-boot.itb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
