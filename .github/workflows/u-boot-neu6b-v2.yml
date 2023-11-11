@@ -18,15 +18,13 @@ jobs:
 
       - name: Install dependencies	
         run: | 
-          ls	
-          mkdir edgble-u-boot_neu6b-v2	
-          cd edgble-u-boot_neu6b-v2	
           sudo apt-get update	
           sudo apt install gcc make gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu	
           pip3 install pyelftools
         
-      - name: Clone U-boot repo
+      - name: Clone U-boot repo and compile u-boot
         run: |	 
+            mkdir edgble-u-boot_neu6b-v2	
             cd edgble-u-boot_neu6b-v2
             git clone https://github.com/edgeble/u-boot.git -b neu6b-v2
             git clone https://github.com/rockchip-linux/rkbin.git
